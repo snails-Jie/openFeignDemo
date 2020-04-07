@@ -7,7 +7,7 @@ package zhangjie.openFeignDemo.context;
 public class FeignContext extends NamedContextFactory<FeignClientSpecification> {
 
     public FeignContext() {
-        super(FeignClientSpecification.class);
+        super(FeignClientSpecification.class,"feign","feign.client.name");
     }
 
 }
