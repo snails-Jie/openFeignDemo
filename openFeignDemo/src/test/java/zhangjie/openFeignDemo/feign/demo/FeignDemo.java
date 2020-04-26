@@ -1,18 +1,11 @@
 package zhangjie.openFeignDemo.feign.demo;
 
-import com.asetku.commons.lang.domain.ResultApi;
-import com.ecwid.consul.v1.ConsulClient;
-import com.netflix.client.config.CommonClientConfigKey;
-import com.netflix.client.config.DefaultClientConfigImpl;
-import com.netflix.client.config.IClientConfig;
-import com.netflix.loadbalancer.ServerList;
 import feign.Feign;
 import feign.RetryableException;
 import feign.Retryer;
 import feign.Target;
 import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
-import feign.ribbon.LoadBalancingTarget;
 import feign.ribbon.RibbonClient;
 import feign.spring.SpringContract;
 import org.junit.Test;
@@ -22,13 +15,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.bind.annotation.*;
-import zhangjie.openFeignDemo.feign.demo.consul.ConsulDiscoveryProperties;
-import zhangjie.openFeignDemo.feign.demo.consul.ConsulServerList;
-
-import java.net.URL;
-
-import static com.netflix.config.ConfigurationManager.getConfigInstance;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  * @autor zhangjie
@@ -49,11 +37,11 @@ public class FeignDemo {
 
 
         Class<UserServiceApi> type = UserServiceApi.class;
-        String name = "asetku-southeast-userinfo";
+        String name = "southeast-userinfo";
         /**
-         * @FeignClient(name = "asetku-southeast-userinfo", path = "/api/invoker/user")
+         * @FeignClient(name = "southeast-userinfo", path = "/api/invoker/user")
          */
-        String url = "http://asetku-southeast-adjust/api/invoker/adjust/register";
+        String url = "http://southeast-adjust/api/invoker/adjust/register";
         Target<UserServiceApi> target = new Target.HardCodedTarget(type,name,url);
 
         RibbonClient ribbonClient = RibbonClient.builder().lbClientFactory(new ConsulLBClientFactory()).build();
@@ -66,7 +54,7 @@ public class FeignDemo {
 
         UserServiceApi userServiceApi = build.target(target);
 
-        userServiceApi.ad(dto);
+//        userServiceApi.ad(dto);
     }
 
 
@@ -96,8 +84,8 @@ public class FeignDemo {
 
 
     interface UserServiceApi {
-        @PostMapping(value ={ "/ad"}, consumes = MediaType.APPLICATION_JSON_VALUE,produces =MediaType.APPLICATION_JSON_VALUE)
-        ResultApi<?> ad(@RequestBody AdRegisterDTO var1);
+//        @PostMapping(value ={ "/ad"}, consumes = MediaType.APPLICATION_JSON_VALUE,produces =MediaType.APPLICATION_JSON_VALUE)
+//        ResultApi<?> ad(@RequestBody AdRegisterDTO var1);
     }
 
 
