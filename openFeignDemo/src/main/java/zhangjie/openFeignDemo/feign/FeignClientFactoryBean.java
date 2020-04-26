@@ -25,7 +25,7 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, ApplicationC
     }
 
     <T> T getTarget(){
-        //FeignContext 为每个微服务的子容器，比如“asetku-southeast-adjust” --> FeignContext
+        //FeignContext 为每个微服务的子容器，比如“southeast-adjust” --> FeignContext
         FeignContext context = applicationContext.getBean(FeignContext.class);
         /**
          * 待处理
@@ -36,7 +36,7 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, ApplicationC
         Feign.Builder builder = null;
         //从子容器中获取
         HystrixTargeter targeter = null;
-        // 封装type、name（“asetku-southeast-adjust”）、url(http://asetku-southeast-adjust/api/invoker/adjust/register)
+        // 封装type、name（“southeast-adjust”）、url(http://southeast-adjust/api/invoker/adjust/register)
         HardCodedTarget<T> target = null;
         return targeter.target(this, builder, context, target);
 

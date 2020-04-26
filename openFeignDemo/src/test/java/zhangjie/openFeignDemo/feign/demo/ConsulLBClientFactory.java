@@ -1,18 +1,13 @@
 package zhangjie.openFeignDemo.feign.demo;
 
-import com.ecwid.consul.v1.ConsulClient;
-import com.netflix.client.ClientFactory;
 import com.netflix.client.config.CommonClientConfigKey;
 import com.netflix.client.config.DefaultClientConfigImpl;
 import com.netflix.client.config.IClientConfig;
 import com.netflix.loadbalancer.DynamicServerListLoadBalancer;
-import com.netflix.loadbalancer.ILoadBalancer;
 import com.netflix.loadbalancer.Server;
-import com.netflix.loadbalancer.ServerList;
 import feign.ribbon.LBClient;
 import feign.ribbon.LBClientFactory;
 import feign.ribbon.RibbonClient;
-import zhangjie.openFeignDemo.feign.demo.consul.ConsulDiscoveryProperties;
 import zhangjie.openFeignDemo.feign.demo.consul.ConsulServerList;
 
 /**
