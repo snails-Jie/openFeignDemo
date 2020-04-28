@@ -12,6 +12,7 @@ import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.util.Assert;
+import zhangjie.openFeignDemo.context.FeignClientSpecification;
 import zhangjie.openFeignDemo.feign.FeignClientFactoryBean;
 import zhangjie.openFeignDemo.feign.feignClient.FeignClient;
 
